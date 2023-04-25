@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
-import time
+from time import sleep
 
 # Declaration and instantiation of objects/variables
 options = Options()
@@ -13,15 +13,26 @@ driver = webdriver.Firefox(
 
 driver.get('https://demo.guru99.com/popup.php')
 
-driver.find_element(By.NAME, "cusid").send_keys("53920")
-driver.find_element(By.NAME, "submit").submit()
+main_page = driver.current_window_handle
 
-alert = driver.switch_to.alert
+driver.find_element(By.XPATH, "//*[contains(@href,'popup.php')]").click()
 
-alertMsg = alert.text
+sleep(5)
 
-print(alertMsg)
+for handle in driver.window_handles:
+    if handle != main_page:
+        popup = handle
 
-time.sleep(3)
+driver.switch_to.window(popup)
 
-alert.accept()
+driver.find_element(By.NAME, "emailid").send_keys("gaurav.3n@gmail.com")
+
+driver.find_element(By.NAME, "btnLogin").click()
+
+driver.close()
+
+driver.switch_to.window(main_page)
+
+sleep(3)
+
+driver.close()
