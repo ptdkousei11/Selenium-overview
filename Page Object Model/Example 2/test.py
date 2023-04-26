@@ -1,7 +1,6 @@
 import unittest
 from selenium import webdriver
 import page
-from selenium.webdriver.firefox.options import Options
 
 # java -jar selenium-server-4.9.0.jar hub
 # java -jar selenium-server-4.9.0.jar node
