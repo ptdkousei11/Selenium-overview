@@ -1,8 +1,8 @@
 from Locators import LoginPageLocators
-from PageBase import PageBase
+from BasePage import BasePage
 
 
-class LoginPage(PageBase):
+class LoginPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -20,7 +20,7 @@ class LoginPage(PageBase):
         return "Epic sadface: Sorry, this user has been locked out." in self.driver.page_source
 
 
-class InventoryPage(PageBase):
+class InventoryPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
