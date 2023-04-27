@@ -13,10 +13,12 @@ class TestAddToCart(unittest.TestCase):
         self.driver = webdriver.Firefox(
             executable_path=r'C:\Program Files (x86)\geckodriver.exe',
             options=options)
+
         self.driver.get("https://www.saucedemo.com/")
 
     def test_add_to_cart(self):
 
+        # Define page
         login_page = LoginPage(self.driver)
         inventory_page = InventoryPage(self.driver)
         cart_page = CartPage(self.driver)
